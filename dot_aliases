@@ -1,0 +1,28 @@
+# Unix
+alias ll="ls -al"
+alias ln="ln -v"
+alias mkdir="mkdir -p"
+alias dotfiles="chezmoi"
+alias 🔥="kill -s KILL"
+alias ls="lsd"
+
+alias matches="grep -qi"
+
+# Shitty mac fixes
+alias fix_dock="killall -Kill Dock"
+
+# git
+alias gs="git status"
+
+# Bundler
+alias b="bundle"
+alias be="bundle exec"
+
+# Spotify
+alias song="tmux-spotify-info"
+
+# Pretty print the path
+alias path='echo $PATH | tr -s ":" "\n"'
+
+# Include custom aliases
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local

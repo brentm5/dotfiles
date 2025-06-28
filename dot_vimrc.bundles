@@ -1,0 +1,74 @@
+if &compatible
+  set nocompatible
+end
+
+" Remove declared plugins
+function! s:UnPlug(plug_name)
+  if has_key(g:plugs, a:plug_name)
+    call remove(g:plugs, a:plug_name)
+  endif
+endfunction
+command!  -nargs=1 UnPlug call s:UnPlug(<args>)
+
+let g:has_async = v:version >= 800 || has('nvim')
+
+call plug#begin('~/.vim/bundle')
+
+" Define bundles via Github repos
+Plug 'christoomey/vim-run-interactive'
+
+" Provides mappings to manage surrounding blocks like brackets
+Plug 'tpope/vim-surround'
+
+" Allows running git commands within vim
+Plug 'tpope/vim-fugitive'
+
+" Github layer for fugitive
+Plug 'tpope/vim-rhubarb'
+
+" Theme for vim
+Plug 'tomasr/molokai'
+
+" Allows commenting of multi line text for various languages
+Plug 'tomtom/tcomment_vim'
+
+" Helpers for Unix shell commands
+Plug 'tpope/vim-eunuch'
+
+" Hooks for various testing frameworks
+Plug 'janko-m/vim-test'
+
+" Adds end structures automatically
+Plug 'tpope/vim-endwise'
+
+" Creates missing directories for files you try and create
+Plug 'pbrisbin/vim-mkdir'
+
+" Editor config for text formatting
+Plug 'editorconfig/editorconfig-vim'
+
+" Copying to the OS specific Clipboard
+Plug 'christoomey/vim-system-copy'
+
+Plug 'slim-template/vim-slim'
+
+if g:has_async
+  Plug 'w0rp/ale'
+endif
+
+" Plugins Planning to remove
+Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-repeat'
+Plug 'elixir-lang/vim-elixir'
+Plug 'fatih/vim-go'
+Plug 'vim-ruby/vim-ruby'
+
+if filereadable(expand("~/.vimrc.bundles.local"))
+  source ~/.vimrc.bundles.local
+endif
+
+call plug#end()

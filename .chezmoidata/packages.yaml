@@ -1,0 +1,5 @@
+packages:
+  brews:
+    - 'git'
+  casks:
+    - 'font-hack-nerd-font'

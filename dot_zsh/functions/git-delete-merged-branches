@@ -1,0 +1,80 @@
+# Delete all the merged branches from both local and remote
+
+git-delete-merged-branches() {
+  if [ ! -d .git ]; then
+    echo 'Git directory not found, you need to be at the root of your repo'
+    return 1
+  fi
+
+  CURRENT_BRANCH="$(git branch --show-current)"
+
+  DEFAULT_BRANCH="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+  echo "Default Branch: $DEFAULT_BRANCH"
+
+  REMOTE="$1"
+  RUN_REMOTE=false
+  if [ ! -z $REMOTE ]; then
+    if [ "$REMOTE" == "true" ]; then
+    echo "Remote Branches: Enabled"
+    RUN_REMOTE=true
+    else
+      echo "Remote Branches: Disabled"
+    fi
+  else
+    echo "Remote Branches: Disabled"
+  fi
+
+  echo "--------------------------"
+
+  if [ "$CURRENT_BRANCH" != "$DEFAULT_BRANCH" ]; then
+    echo "You are currently on '$CURRENT_BRANCH' and you need to be on the '$DEFAULT_BRANCH' for this script to work. \nSwitch to '$DEFAULT_BRANCH' with:  git checkout $DEFAULT_BRANCH"
+    return 1
+  fi
+
+  echo 'Gathering local branches'
+  LOCAL_LIST=$(git branch --merged $DEFAULT_BRANCH | grep -v "$DEFAULT_BRANCH" | sed 's/* //' | sed 's/ //' | awk '{$1=$1;print}')
+
+  if [ "$RUN_REMOTE" == "true" ]; then
+    echo 'Gathering remote branches'
+    REMOTE_LIST=$(git branch -r --merged $DEFAULT_BRANCH | grep -v "$DEFAULT_BRANCH" | sed 's/origin\///' | awk '{$1=$1;print}')
+  fi
+
+  TOTAL_LIST=$(echo "$LOCAL_LIST\n$REMOTE_LIST")
+  if [ -z $TOTAL_LIST ]; then
+    echo "No branches to delete, best of luck"
+    return 0
+  fi 
+
+  echo "\nFound the following branches"
+  while IFS= read -r branch; do
+    if [ ! -z $branch ]; then
+      TIMEFRAME=""
+      if git branch -r | grep -q origin/$branch; then
+        TIMEFRAME="[$(git log -n 1 origin/$branch --format=format:%ar)]"
+        else
+        TIMEFRAME="[$(git log -n 1 $branch --format=format:%ar)]"
+      fi
+      echo "x $branch $TIMEFRAME"
+    fi
+  done <<< "$TOTAL_LIST"
+
+
+  while true; do
+    echo "Do you wish to delete the branches? (y/n)"
+    read yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) return;;
+        * ) echo "Please answer yes or no.";;
+    esac
+  done
+
+  echo "\nDeleting the following branches"
+  while IFS= read -r branch; do
+    if [ ! -z $branch ]; then
+      git delete-branch $branch
+    fi
+  done <<< "$TOTAL_LIST"
+
+  return 0
+}

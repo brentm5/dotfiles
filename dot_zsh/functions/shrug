@@ -1,0 +1,6 @@
+# Just shrug it off
+
+function shrug() {
+  echo -n "¯\_(ツ)_/¯" | pbcopy
+  echo "¯\_(ツ)_/¯ copied to your clipboard"
+}
