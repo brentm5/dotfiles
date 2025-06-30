@@ -3,18 +3,23 @@
 sourceDir = "{{ .chezmoi.homeDir }}/.dotfiles"
 progress = true
 
+bootstrapped = true
 [data]
+  bootstrapped = true
   github_user = "brentm5"
   use_secrets = {{ $use_secrets }}
 
+[template]
+  options = ["missingkey=zero"]
 
-{{ if lookPath "delta" -}}
 [diff]
+  exclude = ["scripts"]
+{{- if lookPath "delta"}}
   pager = "delta"
-{{ end -}}
+{{ end }}
 
-{{ if lookPath "code" -}}
+{{- if lookPath "code" }}
 [edit]
-    args    = ["-r", "--wait"]
-    command = "code"
-{{ end -}}
+  args    = ["-r", "--wait"]
+  command = "code"
+{{ end }}
