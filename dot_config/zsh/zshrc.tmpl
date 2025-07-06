@@ -42,3 +42,8 @@ _load_settings "${XDG_CONFIG_HOME}/zsh/configs"
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+ZSH_PLUGINS_DIR="${XDG_DATA_HOME}/zsh/plugins"
+# Plugins
+[[ -f $ZSH_PLUGINS_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source $ZSH_PLUGINS_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+

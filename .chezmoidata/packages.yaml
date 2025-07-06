@@ -1,6 +1,7 @@
 packages:
   brews:
     - 'git'
+    - 'wget'
     - 'gnupg'
     - 'ca-certificates'
     - 'mas'

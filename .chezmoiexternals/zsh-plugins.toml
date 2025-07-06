@@ -1,0 +1,8 @@
+{{ range .zsh.plugins -}}
+[".local/share/zsh/plugins/{{ .name }}"]
+    type = "{{ .type }}"
+    url = "{{ .url }}"
+    exact = {{ .exact }}
+    stripComponents = {{ .stripComponents }}
+    refreshPeriod = "{{ .refreshPeriod }}"
+{{ end -}}
