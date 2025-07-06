@@ -2,6 +2,8 @@
 
 {{ template "shell_utils.sh" . }}
 
+{{ template "base-shell-environment.sh" . }}
+
 if [[ ! $(command -v brew) ]]; then
     header "🍺  Installing Homebrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -15,10 +17,37 @@ fi
 
 {{ if not .chezmoi.config.data.bootstrapped -}}
 
+# We will create these directories to start out
+if [ ! -f $XDG_CONFIG_HOME ]; then
+    mkdir -p $XDG_CONFIG_HOME
+fi
+
+if [ ! -f $XDG_CACHE_HOME ]; then
+    mkdir -p $XDG_CACHE_HOME
+fi
+
+if [ ! -f $XDG_DATA_HOME ]; then
+    mkdir -p $XDG_DATA_HOME
+fi
+
+if [ ! -f $XDG_STATE_HOME ]; then
+    mkdir -p $XDG_STATE_HOME
+fi
+
+if [ ! -f $USER_BIN_HOME ]; then
+    mkdir -p $USER_BIN_HOME
+fi
+
+if [ ! -f $CODE_HOME ]; then
+    mkdir -p $CODE_HOME
+fi
+
 {{ template "install_brew_packages.sh" . }}
 
 {{ template "install_mise_packages.sh" . }}
 
 {{ template "install_vim_plugins.sh" . }}
+
+{{ template "install_mas_apps.sh" . }}
 
 {{- end }}

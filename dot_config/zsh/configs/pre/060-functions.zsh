@@ -1,4 +1,4 @@
 # load custom executable functions
-for function in ~/.zsh/functions/*; do
+for function in $XDG_CONFIG_HOME/zsh/functions/*; do
   source $function
 done

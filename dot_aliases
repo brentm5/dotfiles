@@ -24,5 +24,8 @@ alias song="tmux-spotify-info"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
+# Command to reload zsh
+alias reload-zsh='source ${HOME}/.zshrc' 
+
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local

@@ -1,9 +1,6 @@
-# load custom executable functions
-for function in ~/.zsh/functions/*; do
-  source $function
-done
+{{ template "base-shell-environment.sh" . }}
 
-# extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
+# extra files in ${XDG_CONFIG_HOME}/zsh/configs/pre , ${XDG_CONFIG_HOME}/zsh/configs , and ${XDG_CONFIG_HOME}/zsh/configs/post
 # these are loaded first, second, and third, respectively.
 _load_settings() {
   _dir="$1"
@@ -38,7 +35,7 @@ _load_settings() {
     fi
   fi
 }
-_load_settings "$HOME/.zsh/configs"
+_load_settings "${XDG_CONFIG_HOME}/zsh/configs"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

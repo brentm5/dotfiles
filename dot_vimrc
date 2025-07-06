@@ -24,8 +24,8 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("$XDG_CONFIG_HOME/vim/vim.bundles"))
+  source $XDG_CONFIG_HOME/vim/vim.bundles
 endif
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
@@ -161,7 +161,7 @@ set spell spelllang=en_us
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside dotfiles repo
-set spellfile=$HOME/.cloud-sync/.vim-spell-en.utf-8.add
+set spellfile=$CLOUD_SYNC_HOME.vim-spell-en.utf-8.add
 
 " Autocomplete with dictionary words when spell check is on
 set complete+=kspell

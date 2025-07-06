@@ -1,5 +1,12 @@
 packages:
   brews:
     - 'git'
+    - 'gnupg'
+    - 'ca-certificates'
+    - 'mas'
+    - 'reattach-to-user-namespace'
   casks:
     - 'font-hack-nerd-font'
+  mas:
+    - "1091189122" # Bear
+    - "1136220934" # Infuse

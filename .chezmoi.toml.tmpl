@@ -8,6 +8,13 @@ bootstrapped = true
   bootstrapped = true
   github_user = "brentm5"
   use_secrets = {{ $use_secrets }}
+  xdgCacheDir       = "{{ .chezmoi.homeDir }}/.cache"
+  xdgConfigDir      = "{{ .chezmoi.homeDir }}/.config"
+  xdgDataDir        = "{{ .chezmoi.homeDir }}/.local/share"
+  xdgStateDir       = "{{ .chezmoi.homeDir }}/.local/state"
+  userBinDir        = "{{ .chezmoi.homeDir }}/.local/bin"
+  userCodeDir       = "{{ .chezmoi.homeDir }}/code"
+  cloudSyncDir      = "{{ .chezmoi.homeDir }}/.cloud-sync"
 
 [template]
   options = ["missingkey=zero"]

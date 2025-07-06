@@ -6,13 +6,11 @@ trusted_config_paths = [
 ]
 
 [alias]
-phrase = 'https://github.com/phrase/asdf-phrase'
 datadog-static-analyzer = 'ubi:datadog/datadog-static-analyzer'
 ftree = 'ubi:trinhminhtriet/ftree'
 scorecard = 'ubi:ossf/scorecard'
 datadog-sbom-generator = 'ubi:DataDog/datadog-sbom-generator'
 lscolors = 'ubi:sharkdp/lscolors'
-
 
 [tools]
 container-structure-test = "1.17.0"
@@ -50,8 +48,6 @@ ripgrep = "14.1.1"
 age = "1.2.1"
 
 [env]
-JAVA_8_HOME='/Users/bmontague/.local/share/mise/installs/java/corretto-8.392.08.1'
-JAVA_11_HOME='/Users/bmontague/.local/share/mise/installs/java/corretto-11.0.18.10.1'
-JAVA_17_HOME='/Users/bmontague/.local/share/mise/installs/java/corretto-17.0.7.7.1'
-
-
+#JAVA_8_HOME='/Users/bmontague/.local/share/mise/installs/java/corretto-8.392.08.1'
+#JAVA_11_HOME='/Users/bmontague/.local/share/mise/installs/java/corretto-11.0.18.10.1'
+#JAVA_17_HOME='/Users/bmontague/.local/share/mise/installs/java/corretto-17.0.7.7.1'

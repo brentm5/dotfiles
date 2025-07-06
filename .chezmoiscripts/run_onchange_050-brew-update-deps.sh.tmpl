@@ -1,0 +1,6 @@
+#!/bin/bash
+
+{{ template "shell_utils.sh" . }}
+
+header "🍺  Installing Packages with Homebrew"
+{{ template "install_brew_packages.sh" . }}
