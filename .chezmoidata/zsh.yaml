@@ -7,3 +7,7 @@ zsh:
         source_file: 'zsh-syntax-highlighting.zsh'
         type: archive
         url: https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
+      - name: zsh-autosuggestions
+        source_file: 'zsh-autosuggestions.zsh'
+        type: archive
+        url: https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz
