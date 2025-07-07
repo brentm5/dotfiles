@@ -1,18 +1,28 @@
+# General
+alias dotfiles="chezmoi"
+alias md="marked"
+alias l='ls'
+alias c="cd ~/code"
+
 # Unix
 alias ll="ls -al"
 alias ln="ln -v"
 alias mkdir="mkdir -p"
-alias dotfiles="chezmoi"
-alias 🔥="kill -s KILL"
 alias ls="lsd"
+
+alias killit="echo "🔥" && kill -s KILL"
 
 alias matches="grep -qi"
 
-# Shitty mac fixes
+# Shitty fixes
 alias fix_dock="killall -Kill Dock"
+alias fix-completions="rm ~/.zcompdump && exec zsh"
 
 # git
+alias gs="git status --short --branch"
 alias gs="git status"
+alias gg="git log --graph"
+alias gcm="git commit -m"
 
 # Bundler
 alias b="bundle"
@@ -25,7 +35,7 @@ alias song="tmux-spotify-info"
 alias path='echo $PATH | tr -s ":" "\n"'
 
 # Command to reload zsh
-alias reload-zsh='source ${HOME}/.zshrc' 
+alias reload-zsh='source ${HOME}/.zshrc'
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local

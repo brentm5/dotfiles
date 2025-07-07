@@ -22,6 +22,9 @@ export CODE_HOME={{ .userCodeDir }}
 # The directory we sync with the cloud
 export CLOUD_SYNC_HOME={{ .cloudSyncDir }}
 
+# The secrets file for storing secrets as env vars
+export SECRETS_FILE={{ .secretsFile }}
+
 # Configure Various applications to use XDG Specifications
 # export ZDOTDIR="${XDG_CONFIG_HOME}"/zsh 
 # export LESSHISTFILE="${XDG_STATE_HOME}"/less/history

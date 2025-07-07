@@ -43,7 +43,11 @@ _load_settings "${XDG_CONFIG_HOME}/zsh/configs"
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-ZSH_PLUGINS_DIR="${XDG_DATA_HOME}/zsh/plugins"
-# Plugins
-[[ -f $ZSH_PLUGINS_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source $ZSH_PLUGINS_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# ZSH Plugins
+[[ -f "${XDG_CONFIG_HOME}/zsh/plugins.zsh" ]] && source "${XDG_CONFIG_HOME}/zsh/plugins.zsh"
 
+# Load environment secrets that are always loaded
+[[ -f "${XDG_CONFIG_HOME}/zsh/secrets" ]] && source "${XDG_CONFIG_HOME}/zsh/secrets"
+
+# Load secrets that can be loaded with `load-secrets` command
+[[ -f $SECRETS_FILE ]] && source $SECRETS_FILE

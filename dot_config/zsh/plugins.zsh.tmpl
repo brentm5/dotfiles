@@ -1,0 +1,7 @@
+{{ $plugins := .zsh.plugins -}}
+# ZSH Plugins (If Any Installed)
+{{ range $plugins.to_install -}}
+{{ if all .name .source_file -}}
+[[ -f {{ $plugins.install_path }}/{{ .name }}/{{ .source_file }} ]] && source {{ $plugins.install_path }}/{{ .name }}/{{ .source_file }}
+{{ end -}}
+{{ end -}}

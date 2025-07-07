@@ -1,0 +1,13 @@
+{{- $plugins := .zsh.plugins -}}
+
+{{ range $plugins.to_install -}}
+{{ if all .url .name -}}
+["{{ $plugins.install_path }}/{{ .name }}"]
+    type = "{{ default "archive" .type }}"
+    url = "{{ .url }}"
+    exact = {{ default true .exact }}
+    stripComponents = {{ default 1 .stripComponents }}
+    refreshPeriod = "{{ default "168h" .refreshPeriod }}"
+
+{{ end -}}
+{{ end -}}

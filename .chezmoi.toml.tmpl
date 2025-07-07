@@ -15,6 +15,7 @@ bootstrapped = true
   userBinDir        = "{{ .chezmoi.homeDir }}/.local/bin"
   userCodeDir       = "{{ .chezmoi.homeDir }}/code"
   cloudSyncDir      = "{{ .chezmoi.homeDir }}/.cloud-sync"
+  secretsFile       = "{{ .chezmoi.homeDir }}/.secrets.local"
 
 [template]
   options = ["missingkey=zero"]
