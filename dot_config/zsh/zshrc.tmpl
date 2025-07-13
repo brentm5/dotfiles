@@ -1,6 +1,9 @@
 {{ template "base-shell-environment.sh" . }}
 
-# extra files in ${XDG_CONFIG_HOME}/zsh/configs/pre , ${XDG_CONFIG_HOME}/zsh/configs , and ${XDG_CONFIG_HOME}/zsh/configs/post
+# ZSH Plugins
+[[ -f "${XDG_CONFIG_HOME}/zsh/plugins.zsh" ]] && source "${XDG_CONFIG_HOME}/zsh/plugins.zsh"
+
+# extra files in ${XDG_CONFIG_HOME}/zsh?configs/pre , ${XDG_CONFIG_HOME}/zsh/configs , and ${XDG_CONFIG_HOME}/zsh/configs/post
 # these are loaded first, second, and third, respectively.
 _load_settings() {
   _dir="$1"
@@ -42,9 +45,6 @@ _load_settings "${XDG_CONFIG_HOME}/zsh/configs"
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
-
-# ZSH Plugins
-[[ -f "${XDG_CONFIG_HOME}/zsh/plugins.zsh" ]] && source "${XDG_CONFIG_HOME}/zsh/plugins.zsh"
 
 # Load environment secrets that are always loaded
 [[ -f "${XDG_CONFIG_HOME}/zsh/secrets" ]] && source "${XDG_CONFIG_HOME}/zsh/secrets"

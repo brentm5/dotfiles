@@ -1,0 +1,4 @@
+eval "$(chezmoi completion zsh)"
+
+#compdef dot
+compdef dot=chezmoi

@@ -48,6 +48,7 @@ ripgrep = "14.1.1"
 1password = "2.30.3"
 age = "1.2.1"
 tlrc = "1.11.1"
+dust = "1.2.2"
 
 [env]
 #JAVA_8_HOME='/Users/bmontague/.local/share/mise/installs/java/corretto-8.392.08.1'

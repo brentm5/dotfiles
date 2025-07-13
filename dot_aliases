@@ -1,5 +1,6 @@
 # General
-alias dotfiles="chezmoi"
+alias dot="chezmoi"
+alias dotfiles="chezmoi cd"
 alias md="marked"
 alias l='ls'
 alias c="cd ~/code"
@@ -20,7 +21,6 @@ alias fix-completions="rm ~/.zcompdump && exec zsh"
 
 # git
 alias gs="git status --short --branch"
-alias gs="git status"
 alias gg="git log --graph"
 alias gcm="git commit -m"
 

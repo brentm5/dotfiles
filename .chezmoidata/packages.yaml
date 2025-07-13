@@ -1,11 +1,12 @@
 packages:
   brews:
-    - 'git'
-    - 'wget'
-    - 'gnupg'
     - 'ca-certificates'
+    - 'expect'
+    - 'git'
+    - 'gnupg'
     - 'mas'
     - 'reattach-to-user-namespace'
+    - 'wget'
   casks:
     - 'font-hack-nerd-font'
   mas:

@@ -11,3 +11,6 @@ zsh:
         source_file: 'zsh-autosuggestions.zsh'
         type: archive
         url: https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz
+  private:
+    - path: '.dotfiles-private'
+      repo: 'brentm5/dotfiles-private'

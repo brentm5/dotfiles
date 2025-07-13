@@ -1,5 +1,5 @@
 remote_servers:
-  - name: dns
+  - name: dns.brent.haus
     op_id: dd476nm7gjoh3o4uh3xgqlqznm
   - name: low
     op_id: ckf2rbsccbycp7rqayvkhvqbsq
