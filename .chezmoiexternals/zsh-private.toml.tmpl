@@ -1,12 +1,11 @@
 {{- $private := .zsh.private -}}
 
-{{ if (env "SSH_AUTH_SOCK") }}
+{{ if (env "SSH_AUTH_SOCK_DISABLE") }}
 {{ range $private -}}
 {{ if all .repo .path -}}
 ["{{ .path }}"]
     type = "git-repo"
     url = "git@github.com:{{ .repo }}.git"
-    refreshPeriod = "{{ default "1h" .refreshPeriod }}"
 
 {{ end -}}
 {{ end -}}
