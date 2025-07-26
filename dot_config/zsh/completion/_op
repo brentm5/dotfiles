@@ -1,4 +1,6 @@
 #compdef op
 
-
-eval "$(op completion zsh)";
+# Check if op is installed
+if (( $+commands[op] )); then
+  eval "$(op completion zsh)";
+fi

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-{{ template "shell_utils.sh" . }}
-
 {{ template "base-shell-environment.sh" . }}
+
+{{ template "shell_utils.sh" . }}
 
 if [[ ! $(command -v brew) ]]; then
     header "🍺  Installing Homebrew"

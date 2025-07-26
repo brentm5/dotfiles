@@ -1,4 +1,8 @@
+#!/bin/bash
+
 {{ template "base-shell-environment.sh" . }}
+
+source "${XDG_CONFIG_HOME}/zsh/shell_utils.zsh"
 
 # ZSH Plugins
 [[ -f "${XDG_CONFIG_HOME}/zsh/plugins.zsh" ]] && source "${XDG_CONFIG_HOME}/zsh/plugins.zsh"
@@ -6,12 +10,50 @@
 # extra files in ${XDG_CONFIG_HOME}/zsh?configs/pre , ${XDG_CONFIG_HOME}/zsh/configs , and ${XDG_CONFIG_HOME}/zsh/configs/post
 # these are loaded first, second, and third, respectively.
 _load_settings() {
-  _dir="$1"
+  local _dir="$1"
+  local _verbose="${ZSHRC_VERBOSE:-false}"
+  local _timing="${ZSHRC_TIMING:-false}"
+  local _debugging="${ZSHRC_DEBUGGING:-false}"
+  local _start_time _end_time _duration _file_start_time _file_end_time _file_duration
+
+  # Set debugging mode
+  if [[ "$_debugging" == "true" ]]; then
+    _verbose=true
+    _timing=true
+  fi
+
+  if [[ "$_verbose" == "true" ]]; then
+    set -x  # Enable debugging output
+  fi
+
+  if [[ "$_timing" == "true" ]]; then
+    _start_time=$(date +%s%N)  # Capture time in nanoseconds without decimal
+  fi
+
   if [ -d "$_dir" ]; then
+    # Consider adding error logging or verbose mode
+    if [ -z "$(ls -A "$_dir")" ]; then
+      echo "Warning: Configuration directory $1 is empty" >&2
+    fi
+
     if [ -d "$_dir/pre" ]; then
       for config in "$_dir"/pre/**/*(N-.); do
         if [ ${config:e} = "zwc" ] ; then continue ; fi
+
+        if [[ "$_timing" == "true" ]]; then
+          _file_start_time=$(date +%s%N)
+        fi
+
+        if [[ "$_verbose" == "true" ]]; then
+          echo "Loading pre-config: $config" >&2
+        fi
         . $config
+
+        if [[ "$_timing" == "true" ]]; then
+          _file_end_time=$(date +%s%N)
+          _file_duration=$(echo "scale=3; ($_file_end_time - $_file_start_time) / 1000000" | bc)
+          echo "Pre-config loading time for $config: $_file_duration ms" >&2
+        fi
       done
     fi
 
@@ -24,7 +66,21 @@ _load_settings() {
           :
           ;;
         *)
-          if [[ -f $config && ${config:e} != "zwc" ]]; then . $config
+          if [[ -f $config && ${config:e} != "zwc" ]]; then 
+            if [[ "$_timing" == "true" ]]; then
+              _file_start_time=$(date +%s%N)
+            fi
+
+            if [[ "$_verbose" == "true" ]]; then
+              echo "Loading config: $config" >&2
+            fi
+            . $config
+
+            if [[ "$_timing" == "true" ]]; then
+              _file_end_time=$(date +%s%N)
+              _file_duration=$(echo "scale=3; ($_file_end_time - $_file_start_time) / 1000000" | bc)
+              echo "Config loading time for $config: $_file_duration ms" >&2
+            fi
           fi
           ;;
       esac
@@ -33,11 +89,40 @@ _load_settings() {
     if [ -d "$_dir/post" ]; then
       for config in "$_dir"/post/**/*(N-.); do
         if [ ${config:e} = "zwc" ] ; then continue ; fi
+
+        if [[ "$_timing" == "true" ]]; then
+          _file_start_time=$(date +%s%N)
+        fi
+
+        if [[ "$_verbose" == "true" ]]; then
+          echo "Loading post-config: $config" >&2
+        fi
         . $config
+
+        if [[ "$_timing" == "true" ]]; then
+          _file_end_time=$(date +%s%N)
+          _file_duration=$(echo "scale=3; ($_file_end_time - $_file_start_time) / 1000000" | bc)
+          echo "Post-config loading time for $config: $_file_duration ms" >&2
+        fi
       done
     fi
+  else
+    echo "Warning: Configuration directory $1 does not exist" >&2
+  fi
+
+  if [[ "$_timing" == "true" ]]; then
+    _end_time=$(date +%s%N)
+    # Calculate duration in milliseconds with bc
+    _duration=$(echo "scale=3; ($_end_time - $_start_time) / 1000000" | bc)
+    echo "Total configuration loading time for $1: $_duration ms" >&2
+  fi
+
+  if [[ "$_verbose" == "true" ]]; then
+    set +x  # Disable debugging output
   fi
 }
+
+# Can be enabled with: ZSHRC_VERBOSE=true zsh
 _load_settings "${XDG_CONFIG_HOME}/zsh/configs"
 
 # Local config

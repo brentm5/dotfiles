@@ -1,0 +1,6 @@
+#compdef bat
+
+# Check if bat is installed
+if (( $+commands[bat] )); then
+    eval "$(bat --completion zsh)"
+fi

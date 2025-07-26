@@ -1,4 +1,8 @@
-eval "$(chezmoi completion zsh)"
-
 #compdef dot
+
+# Check if chezmoi is installed
+if (( $+commands[chezmoi] )); then
+  eval "$(chezmoi completion zsh)"
+fi
+
 compdef dot=chezmoi

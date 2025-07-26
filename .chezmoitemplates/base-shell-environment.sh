@@ -26,6 +26,6 @@ export CLOUD_SYNC_HOME={{ .cloudSyncDir }}
 export SECRETS_FILE={{ .secretsFile }}
 
 # Configure Various applications to use XDG Specifications
-# export ZDOTDIR="${XDG_CONFIG_HOME}"/zsh 
+# export ZDOTDIR="${XDG_CONFIG_HOME}"/zsh
 # export LESSHISTFILE="${XDG_STATE_HOME}"/less/history
 # export GNUPGHOME="${XDG_DATA_HOME}"/gnupg
