@@ -2,7 +2,7 @@ Host *
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
 {{- if .use_secrets}}
-{{- range .remote_servers }}
+{{- range .ssh.hosts }}
 
 Host {{ .name }}
     User {{ (onepasswordDetailsFields .op_id).username.value }}
@@ -12,3 +12,5 @@ Host {{ .name }}
 {{- end }}
 {{- end }}
 {{- end }}
+
+Include {{ .xdgConfigDir }}/colima/ssh_config

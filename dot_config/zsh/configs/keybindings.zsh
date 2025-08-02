@@ -16,3 +16,6 @@ bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 bindkey "^Q" push-line-or-edit
 bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
+
+# This is used for zsh-autosuggestions but it didn't allow for all directories to be seen
+# bindkey '^I' autosuggest-accept 

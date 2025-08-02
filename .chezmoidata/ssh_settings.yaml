@@ -1,0 +1,10 @@
+ssh:
+  hosts:
+    - name: dns
+      op_id: tm5resrpeemg7ttfqzlompeswu
+    - name: low
+      op_id: ckf2rbsccbycp7rqayvkhvqbsq
+    - name: linux-gpu
+      op_id: mnnz4e7mnqvut2ia5s45klrbx4
+    - name: deskpi
+      op_id: dd476nm7gjoh3o4uh3xgqlqznm

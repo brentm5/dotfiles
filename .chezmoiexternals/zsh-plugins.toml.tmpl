@@ -1,8 +1,9 @@
 {{- $plugins := .zsh.plugins -}}
+{{- $rootPath := .xdgDataPath -}}
 
 {{ range $plugins.to_install -}}
 {{ if all .url .name -}}
-["{{ $plugins.install_path }}/{{ .name }}"]
+["{{ $rootPath }}/{{ $plugins.install_path }}/{{ .name }}"]
     type = "{{ default "archive" .type }}"
     url = "{{ .url }}"
     exact = {{ default true .exact }}

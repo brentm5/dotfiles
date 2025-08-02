@@ -6,18 +6,31 @@ progress = true
 [data]
   bootstrapped = true
   github_user = "brentm5"
-  use_secrets = {{ $use_secrets }}
+  use_secrets = {{ $use_secrets }} # Use secrets from 1Password?
+
+  # Ideally these would make sense to be in chezmoidata/zdg-dirs
+  xdgCachePath       = ".cache"
   xdgCacheDir       = "{{ .chezmoi.homeDir }}/.cache"
+
+  xdgConfigPath      = ".config"
   xdgConfigDir      = "{{ .chezmoi.homeDir }}/.config"
+
+  xdgDataPath        = ".local/share"
   xdgDataDir        = "{{ .chezmoi.homeDir }}/.local/share"
+
+  xdgStatePath       = ".local/state"
   xdgStateDir       = "{{ .chezmoi.homeDir }}/.local/state"
+
+  userBinPath        = ".local/bin"
   userBinDir        = "{{ .chezmoi.homeDir }}/.local/bin"
+
+  # User specific directories
   userCodeDir       = "{{ .chezmoi.homeDir }}/code"
   cloudSyncDir      = "{{ .chezmoi.homeDir }}/.cloud-sync"
   secretsFile       = "{{ .chezmoi.homeDir }}/.secrets.local"
 
 [template]
-  options = ["missingkey=zero"]
+  options = ["missingkey=zero"] # Allows missing keys in templates to be ignored
 
 [diff]
   exclude = ["scripts"]

@@ -7,6 +7,7 @@ packages:
     - 'mas'
     - 'reattach-to-user-namespace'
     - 'wget'
+    - 'colima'
   casks:
     - 'font-hack-nerd-font'
   mas:
