@@ -8,6 +8,9 @@ packages:
     - 'reattach-to-user-namespace'
     - 'wget'
     - 'colima'
+    - 'docker'
+    - 'docker-buildx'
+    - 'docker-credential-helper'
   casks:
     - 'font-hack-nerd-font'
   mas:
