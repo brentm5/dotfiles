@@ -7,10 +7,10 @@ PATH="$USER_BIN_HOME:$PATH"
 # mkdir .git/safe in the root of repositories you trust
 PATH=".git/safe/../../bin:$PATH"
 
-# Add rancher Desktop
-PATH="$PATH:$HOME/.rd/bin"
-
 # Load intellij scripts
 PATH="$HOME/.toolbox:$PATH"
+
+# LM Studio
+PATH="$PATH:$HOME/.lmstudio/bin"
 
 export -U PATH

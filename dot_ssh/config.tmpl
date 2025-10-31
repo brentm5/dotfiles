@@ -7,8 +7,8 @@ Host *
 Host {{ .name }}
     User {{ (onepasswordDetailsFields .op_id).username.value }}
     Hostname {{ (onepasswordDetailsFields .op_id).url.value }}
-{{- if (onepasswordItemFields .op_id).port }}
-    Port {{ (onepasswordItemFields .op_id).port.value }}
+{{- if (onepasswordDetailsFields .op_id).port }}
+    Port {{ (onepasswordDetailsFields .op_id).port.value }}
 {{- end }}
 {{- end }}
 {{- end }}

@@ -1,0 +1,8 @@
+macos:
+  defaults:
+    domains:
+      com.apple.finder:
+        - key: "FXDefaultSearchScope"
+          value: "SCcf"
+        - key: "AppleShowAllFiles"
+          value: true
