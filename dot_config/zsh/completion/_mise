@@ -1,0 +1,6 @@
+#compdef mise
+
+# Check if mise is installed
+if [ -f "$HOME/.local/bin/mise" ]; then
+  eval "$(mise completion zsh)";
+fi

@@ -1,0 +1,6 @@
+#compdef fnox
+
+# Check if fnox is installed
+if (( $+commands[fnox] )); then
+  eval "$(fnox completion zsh)"
+fi

@@ -1,0 +1,5 @@
+# Returns the public IP
+
+getip() {
+  curl -s 'https://api.ipify.org'
+}
