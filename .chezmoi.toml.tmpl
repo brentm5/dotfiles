@@ -1,4 +1,5 @@
 {{- $use_secrets := promptBoolOnce . "use_secrets" "Use secrets from 1Password? (true/false)" -}}
+{{- $work_environment := promptBoolOnce . "work_environment" "Configure this host for a work environment? (true/false)" -}}
 
 sourceDir = "{{ .chezmoi.homeDir }}/.dotfiles"
 progress = true
@@ -7,6 +8,7 @@ progress = true
   bootstrapped = true
   github_user = "brentm5"
   use_secrets = {{ $use_secrets }} # Use secrets from 1Password?
+  work_environment = {{ $work_environment }} # Configure the host for a work environment?
 
   # Ideally these would make sense to be in chezmoidata/zdg-dirs
   xdgCachePath       = ".cache"

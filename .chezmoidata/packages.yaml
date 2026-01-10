@@ -1,18 +1,23 @@
 packages:
   brews:
     - 'ca-certificates'
+    - 'colima'
+    - 'docker-buildx'
+    - 'docker-compose'
+    - 'docker-credential-helper'
+    - 'docker'
     - 'expect'
     - 'git'
     - 'gnupg'
+    - 'lima'
     - 'mas'
     - 'reattach-to-user-namespace'
+    - 'telnet'
+    - 'tree'
     - 'wget'
-    - 'colima'
-    - 'docker'
-    - 'docker-buildx'
-    - 'docker-credential-helper'
   casks:
     - 'font-hack-nerd-font'
+    - 'raycast'
   mas:
     - "1091189122" # Bear
     - "1136220934" # Infuse

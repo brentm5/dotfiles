@@ -37,3 +37,12 @@ notice() { _line_ notice "${1}" "${2:-}"; }
 info() { _line_ info "${1}" "${2:-}"; }
 success() { _line_ success "${1}" "${2:-}"; }
 header() { _line_ header "${1}" "${2:-}"; }
+
+source_if_exists() {
+    # Expand ~ to home directory
+    local _file="${1/#\~/$HOME}"
+    if [ -f "${_file}" ]; then
+        # shellcheck source=/dev/null
+        . "${_file}"
+    fi
+}
