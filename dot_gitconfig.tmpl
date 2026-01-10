@@ -54,9 +54,18 @@
  ff = only
 
 [user]
+{{- if .work_environment }}
+  email = {{ .work_email }}
+{{- else }}
   email = brent@bmontague.com
+{{- end }}
   name = Montague, Brent
+{{- if .work_environment }}
+  # To use different signing keys for work, add conditional logic here:
+  signingkey = <work-signing-key>
+{{- else }}
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICjwaAdRfSjZfwrQR5+4kQ2e2hawmqf5zlVnHAljTV+s
+{{- end }}
 
 [gpg]
   format = ssh

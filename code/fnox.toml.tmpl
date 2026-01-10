@@ -1,12 +1,14 @@
+{{- if .fnox_vault -}}
 [providers.global]
 type = "keychain"
 service = "fnox"
 
 [providers.1password]
 type = "1password"
-vault = "brent.haus"
+vault = "{{ .fnox_vault }}"
 
 [secrets.OP_SERVICE_ACCOUNT_TOKEN]
 provider = "global"
 value = "OP_SERVICE_ACCOUNT_TOKEN"
 description = "1password Service account token used by FNOX for local secret resolution"
+{{- end }}

@@ -1,14 +1,22 @@
+# SSH host scope: 'common', 'work', 'personal'
+# Templates will filter based on work_environment setting
 ssh:
   hosts:
     - name: dns
       op_id: tm5resrpeemg7ttfqzlompeswu
+      scope: 'personal'
     - name: low
       op_id: ckf2rbsccbycp7rqayvkhvqbsq
+      scope: 'personal'
     - name: linux-gpu
       op_id: mnnz4e7mnqvut2ia5s45klrbx4
+      scope: 'personal'
     - name: deskpi
       op_id: dd476nm7gjoh3o4uh3xgqlqznm
+      scope: 'personal'
     - name: pikvm
       op_id: kj5e77g63x5u6czm7u7jm7pfna
+      scope: 'personal'
     - name: fresherplex
       op_id: ckgjsht4yurz4gm5mzbjwuj5wi
+      scope: 'personal'

@@ -1,8 +1,10 @@
 
 apps=(
-    {{ range $package := .packages.mas }}
-    "{{ $package }}"
-    {{ end }}
+{{- range $package := .packages.mas }}
+{{- if or (eq $package.scope "common") (and (eq $package.scope "work") $.work_environment) (and (eq $package.scope "personal") (not $.work_environment)) }}
+    "{{ $package.name }}"
+{{- end }}
+{{- end }}
 )
 
 if [[ $(command -v mas) ]]; then

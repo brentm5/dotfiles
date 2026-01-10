@@ -1,5 +1,10 @@
 {{- $use_secrets := promptBoolOnce . "use_secrets" "Use secrets from 1Password? (true/false)" -}}
+{{- $fnox_vault := promptStringOnce . "fnox_vault" "1Password vault name for fnox" -}}
 {{- $work_environment := promptBoolOnce . "work_environment" "Configure this host for a work environment? (true/false)" -}}
+{{- $work_email := "" -}}
+{{- if $work_environment -}}
+{{-   $work_email = promptStringOnce . "work_email" "Work git email address" -}}
+{{- end -}}
 
 sourceDir = "{{ .chezmoi.homeDir }}/.dotfiles"
 progress = true
@@ -8,7 +13,9 @@ progress = true
   bootstrapped = true
   github_user = "brentm5"
   use_secrets = {{ $use_secrets }} # Use secrets from 1Password?
+  fnox_vault = "{{ $fnox_vault }}" # 1Password vault name for fnox
   work_environment = {{ $work_environment }} # Configure the host for a work environment?
+  work_email = "{{ $work_email }}" # Work email address (only set if work_environment is true)
 
   # Ideally these would make sense to be in chezmoidata/zdg-dirs
   xdgCachePath       = ".cache"
