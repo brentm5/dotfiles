@@ -37,10 +37,5 @@ alias path='echo $PATH | tr -s ":" "\n"'
 # Command to reload zsh
 alias reload-zsh='source ${HOME}/.zshrc'
 
-# Local LLM
-alias llm="clai --chat-model ollama:gemma3:4b"
-alias ask="llm q"
-alias rask="llm -re q"
-
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local

@@ -72,7 +72,7 @@
   path = ~/.gitconfig.local
 {{ else }}
 [user]
-  email = {{ .personal_email }}
-  name = Montague, Brent
+  email = {{ .personal_email | quote }}
+  name = "Montague, Brent"
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICjwaAdRfSjZfwrQR5+4kQ2e2hawmqf5zlVnHAljTV+s
 {{ end }}
