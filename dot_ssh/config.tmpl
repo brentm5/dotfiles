@@ -1,16 +1,14 @@
 Host *
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
-{{- if .use_secrets}}
+{{- if and .use_secrets (not .work_environment) }}
 {{- range .ssh.hosts }}
-{{- if or (eq .scope "common") (and (eq .scope "work") $.work_environment) (and (eq .scope "personal") (not $.work_environment)) }}
 
 Host {{ .name }}
     User {{ (onepasswordDetailsFields .op_id).username.value }}
     Hostname {{ (onepasswordDetailsFields .op_id).url.value }}
 {{- if (onepasswordDetailsFields .op_id).port }}
     Port {{ (onepasswordDetailsFields .op_id).port.value }}
-{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}
