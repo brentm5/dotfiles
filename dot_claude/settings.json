@@ -1,0 +1,8 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "~/.bin/claude-statusline",
+    "padding": 0
+  }
+}
+

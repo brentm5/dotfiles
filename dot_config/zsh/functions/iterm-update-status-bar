@@ -1,0 +1,24 @@
+
+iterm-update-status-bar() {
+  # echo -ne "\e]1;${1}\a"
+  update-aws-profile-status
+  update-claude-code-status
+}
+
+update-aws-profile-status(){
+  iterm2_set_user_var "aws_profile" "$AWS_PROFILE"
+}
+
+update-claude-code-status(){ 
+  STATUS="🤖 [✅] [$CLAUDE_TERMINAL_SESSION_ID]"
+
+  if [[ -z "$CLAUDE_SESSION_INITIALIZED" ]]; then
+    STATUS="🤖 [⚠️] [$CLAUDE_TERMINAL_SESSION_ID]"
+  fi
+
+  if [[ -z "$CLAUDE_TERMINAL_SESSION_ID" ]]; then
+    STATUS="🤖 [❌][No Session]"
+  fi
+
+  iterm2_set_user_var "claude_code_session_status" "$STATUS"
+}

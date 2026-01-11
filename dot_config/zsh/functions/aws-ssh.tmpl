@@ -1,0 +1,22 @@
+{{- if .work_environment -}}
+# will attempt to login to the IP address of the aws instance id
+
+aws-ssh() {
+  INSTANCE_ID="$1"
+  if [[ -z $INSTANCE_ID ]]; then
+    echo 'Need to pass in an instance id USAGE: `aws-ssh <instance-id>`' >&2
+    return 1
+  fi
+
+  IP_ADDRESS="$(aws-resolve-ip $INSTANCE_ID)"
+
+  if [[ -z $IP_ADDRESS ]]; then
+    echo "IP Address not found for $INSTANCE_ID" >&2
+    return 1
+  fi
+
+  echo "Attempting to login to $INSTANCE_ID via $IP_ADDRESS" >&2
+
+  ssh $IP_ADDRESS
+}
+{{- end -}}

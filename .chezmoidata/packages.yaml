@@ -37,6 +37,8 @@ packages:
       scope: 'common'
     - name: 'raycast'
       scope: 'common'
+    - name: 'marked'
+      scope: 'common'
   mas:
     - name: "1091189122" # Bear
       scope: 'personal'

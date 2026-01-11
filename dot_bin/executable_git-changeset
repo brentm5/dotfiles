@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+if [ ! -d .git ]; then
+  echo 'Error: This needs to be called at the repository root'
+  exit 1
+fi
+
+AI_SUMMARY="$(git sdiff "$@")"
+echo "Creating Changeset with the following summary:"
+echo "$AI_SUMMARY"
+
+npx --package=@cvent/builder-changesets@2.1.0 -- changeset-cvent generate "$AI_SUMMARY"

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+PROMPT_TEMPLATE="${HOME}/.dotfiles/prompts/review-code.poml"
+
+# Get the diff
+DIFF=$(git simple-diff "$@")
+
+# Build JSON and use jq to replace {{diff}} placeholder
+PROMPT="$(jq -n \
+  --arg diff "$DIFF" \
+  --arg prompt "$(cat "$PROMPT_TEMPLATE")" \
+  '{inputs: {diff: $diff}, prompt: $prompt} | . as $root | $root.prompt | gsub("{|diff|}"; $root.inputs.diff)' \
+  -r)"
+
+echo "Perform a review on this code, focus on documentation" | claude --append-system-prompt "$PROMPT" 2>/dev/null

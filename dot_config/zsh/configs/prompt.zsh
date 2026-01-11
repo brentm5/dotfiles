@@ -6,6 +6,15 @@ git_prompt_info() {
   fi
 }
 
+prompt_iterm_status_bar_precmd() {
+  iterm-update-status-bar
+}
+
+prompt_iterm_status_bar_setup() {
+    autoload -Uz iterm-update-status-bar
+    add-zsh-hook precmd prompt_iterm_status_bar_precmd
+}
+
 current_path_info() {
   echo "%{$fg_bold[blue]%}%~%{$reset_color%}"
 }
@@ -14,6 +23,8 @@ current_path_info() {
 setopt promptsubst
 
 autoload -U promptinit && promptinit
+
+prompt_iterm_status_bar_setup
 
 # Torn on which one i like better
 # [master][~/.dotfiles]
