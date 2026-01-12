@@ -1,3 +1,13 @@
 CLAUDE.md
-.github/
+README.md
 
+# Don't include certain files after if work computer
+{{ if .work_environment }}
+code/fnox.toml
+.claude/settings.json
+{{ end }}
+
+{{ if not (.work_environment) }}
+.config/zsh/functions/aws-*
+.oktaws
+{{ end }}

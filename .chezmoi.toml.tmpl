@@ -4,9 +4,11 @@
 {{- $work_environment := promptBoolOnce . "work_environment" "Configure this host for a work environment? (true/false)" -}}
 {{- $work_email := "" -}}
 {{- $work_username := "" -}}
+{{- $work_1password_vault := "" -}}
 {{- if $work_environment -}}
 {{-   $work_email = promptStringOnce . "work_email" "Work git email address" -}}
 {{-   $work_username = promptStringOnce . "work_username" "Work git username" -}}
+{{-   $work_1password_vault = promptStringOnce . "work_1password_vault" "Work 1password Vault" -}}
 {{- end -}}
 
 sourceDir = "{{ .chezmoi.homeDir }}/.dotfiles"
@@ -21,6 +23,7 @@ progress = true
   work_environment = {{ $work_environment }} # Configure the host for a work environment?
   work_email = "{{ $work_email }}" # Work email address (only set if work_environment is true)
   work_username = "{{ $work_username }}" # Work git username (only set if work_environment is true)
+  work_1password_vault = "{{ $work_1password_vault }}" # 1Password vault to use with a work machine (only set if work_environment is true)
 
   # Ideally these would make sense to be in chezmoidata/zdg-dirs
   xdgCachePath       = ".cache"
