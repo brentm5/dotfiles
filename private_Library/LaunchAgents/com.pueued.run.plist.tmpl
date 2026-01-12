@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>KeepAlive</key>
+    <dict>
+      <key>SuccessfulExit</key>
+      <false />
+    </dict>
+    <key>Label</key>
+    <string>com.pueued.run</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PUEUE_CONFIG_PATH</key>
+      <string>{{ .chezmoi.homeDir }}/.config/pueue/pueue.yml</string>
+    </dict>
+    <key>ProgramArguments</key>
+    <array>
+      <string>{{ .chezmoi.homeDir }}/.local/share/mise/shims/pueued</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true />
+    <key>StandardOutPath</key>
+    <string>/tmp/pueued_launchd_stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/pueued_launchd_stderr.log</string>
+    <key>ExitTimeOut</key>
+    <integer>10</integer>
+  </dict>
+</plist>

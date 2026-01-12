@@ -53,20 +53,6 @@
 [pull]
  ff = only
 
-[user]
-{{- if .work_environment }}
-  email = {{ .work_email }}
-{{- else }}
-  email = brent@bmontague.com
-{{- end }}
-  name = Montague, Brent
-{{- if .work_environment }}
-  # To use different signing keys for work, add conditional logic here:
-  signingkey = <work-signing-key>
-{{- else }}
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICjwaAdRfSjZfwrQR5+4kQ2e2hawmqf5zlVnHAljTV+s
-{{- end }}
-
 [gpg]
   format = ssh
 
@@ -80,3 +66,13 @@
   navigate = true  # use n and N to move between diff sections
   dark = true      # or light = true, or omit for auto-detection
   side-by-side = true
+
+{{ if .work_environment }}
+[include]
+  path = ~/.gitconfig.local
+{{ else }}
+[user]
+  email = {{ .personal_email | quote }}
+  name = "Montague, Brent"
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICjwaAdRfSjZfwrQR5+4kQ2e2hawmqf5zlVnHAljTV+s
+{{ end }}

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+IGNORED_FILES=("pnpm-lock.yml" ".changeset/")
+
+# Ignores tests because they can be exceptionally noisy in diffs
+# AI_SUMMARY="$(git diff $TRUNK -- . ':!*tests*' | clai --chat-model ollama:gemma3:4b -r q "$PROMPT")"
+git diff "$@" -- . $(printf ":(exclude)%s " "${IGNORED_FILES[@]}")

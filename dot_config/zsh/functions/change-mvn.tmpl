@@ -1,3 +1,4 @@
+{{- if .work_environment -}}
 # will change the mvn profile
 # Without valid folder error and return
 
@@ -10,3 +11,4 @@ change-mvn() {
     echo "MVN settings does not exist at '$NEW_MVN_SETTINGS'"
   fi
 }
+{{- end -}}

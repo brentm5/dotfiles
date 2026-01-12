@@ -1,0 +1,33 @@
+#!/bin/sh
+
+set -e
+
+REPO_ROOT=$(git rev-parse --show-toplevel)
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+PR_EXISTS=$(gh pr list --head $CURRENT_BRANCH --state open --json number --jq 'has(0)')
+
+TRUNK="$(git symbolic-ref refs/remotes/origin/HEAD --short)"
+
+PROMPT=$(cat "${HOME}/.prompts/summarize-diff-for-pr.poml")
+
+echo "Current branch: $CURRENT_BRANCH"
+echo "Checking if PR exists for this branch..."
+
+if [ $PR_EXISTS = 'true' ]; then
+  gh pr view $(gh pr list --head $CURRENT_BRANCH --state open --json number --jq '.[0].number') --web
+  else
+  # Ignores tests because they can be exceptionally noisy in diffs
+  # AI_SUMMARY="$(git diff $TRUNK -- . ':!*tests*' | clai --chat-model ollama:gemma3:4b -r q "$PROMPT")"
+  AI_SUMMARY="$(git simple-diff $TRUNK | claude --output-format text -p "$PROMPT")"
+  PR_AI_TITLE="$(echo "${AI_SUMMARY}" | head -1)"
+
+  PR_AI_SUMMARY="$(echo "$AI_SUMMARY" | tail -n +2)"
+
+
+  echo "Summary:"
+  echo "${PR_AI_SUMMARY}" | glow -
+
+  #gh pr create --fill --label "ai:autofix" -e -t "${PR_AI_TITLE}" -b "${PR_AI_SUMMARY}" && gh pr view --web 
+  gh pr create -e -t "${PR_AI_TITLE}" -b "${PR_AI_SUMMARY}" && gh pr view --web 
+fi
+
