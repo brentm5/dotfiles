@@ -1,7 +1,6 @@
-{{- if .work_environment -}}
-# will attempt to login to the instance via ssm
+# will attempt to resolve the IP address of the aws instance id
 
-aws-ssm() {
+aws-resolve-ip() {
   local KNIFE_PATH='/opt/chef-workstation/bin/knife'
   INSTANCE_ID="$1"
   if [[ -z $INSTANCE_ID ]]; then
@@ -10,7 +9,7 @@ aws-ssm() {
   fi
 
   SEARCH_STRING="ec2_instance_id:$INSTANCE_ID"
-  RESULTS_RESPONSE=$($KNIFE_PATH search $SEARCH_STRING -F json -a ec2.placement_region)
+  RESULTS_RESPONSE=$($KNIFE_PATH search $SEARCH_STRING -F json -a ipaddress)
   RESULTS=$(echo "$RESULTS_RESPONSE" | jq -r '.results')
 
   if [ "$RESULTS" -lt "1" ]; then
@@ -23,10 +22,12 @@ aws-ssm() {
     return 1
   fi
 
-  REGION="$(echo "$RESULTS_RESPONSE" | jq -r '.rows[0][]["ec2.placement_region"]')"
+  IP_ADDRESS="$(echo "$RESULTS_RESPONSE" | jq -r '.rows[0][].ipaddress')"
 
-  echo "Running: aws --profile $AWS_PROFILE --region $REGION ssm start-session --target $INSTANCE_ID"
+  if [[ -z $IP_ADDRESS ]]; then
+    echo "IP Address not found for $INSTANCE_ID" >&2
+    return 1
+  fi
 
-  aws --profile $AWS_PROFILE --region $REGION ssm start-session --target $INSTANCE_ID
+  echo $IP_ADDRESS
 }
-{{- end -}}

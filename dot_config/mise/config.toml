@@ -6,25 +6,26 @@ trusted_config_paths = [
 ]
 
 [tool_alias]
-datadog-sbom-generator = 'ubi:datadog/datadog-sbom-generator'
-datadog-static-analyzer = 'ubi:datadog/datadog-static-analyzer'
-ftree = 'ubi:trinhminhtriet/ftree'
-lscolors = 'ubi:sharkdp/lscolors'
-oktaws = 'ubi:jonathanmorley/oktaws'
-osv-scanner = 'ubi:google/osv-scanner'
-scorecard = 'ubi:ossf/scorecard'
+datadog-sbom-generator = 'github:datadog/datadog-sbom-generator'
+datadog-static-analyzer = 'github:datadog/datadog-static-analyzer'
+ftree = 'github:trinhminhtriet/ftree'
+lscolors = 'github:sharkdp/lscolors'
+oktaws = 'github:jonathanmorley/oktaws'
+osv-scanner = 'github:google/osv-scanner'
+scorecard = 'github:ossf/scorecard'
 tlrc = 'aqua:tldr-pages/tlrc'
-ldcli = 'ubi:launchdarkly/ldcli'
+ldcli = 'github:launchdarkly/ldcli'
 cai = 'cargo:ad-si/cai'
-clai = 'ubi:baalimago/clai'
-csvlens = 'ubi:ys-l/csvlens'
-vector = 'ubi:vectordotdev/vector'
-onefetch = 'ubi:o2sh/onefetch'
-ouch = 'ubi:ouch-org/ouch'
-miniserve = 'ubi:svenstaro/miniserve'
+clai = 'github:baalimago/clai'
+csvlens = 'github:ys-l/csvlens'
+vector = 'github:vectordotdev/vector'
+onefetch = 'github:o2sh/onefetch'
+ouch = 'github:ouch-org/ouch'
+miniserve = 'github:svenstaro/miniserve'
 pueue = 'aqua:Nukesor/pueue/pueue'
 pueued = 'aqua:Nukesor/pueue/pueued'
-dysk = 'ubi:Canop/dysk'
+dysk = 'github:Canop/dysk'
+phrase = 'asdf:phrase/asdf-phrase'
 
 [env]
 JAVA_8_HOME = '~/.local/share/mise/installs/java/corretto-8.392.08.1'
@@ -47,7 +48,6 @@ bun = "latest"
 cai = "HEAD"
 chezmoi = "2.69.1"
 clai = "1.8.1"
-claude = "2.0.50"
 container-structure-test = "1.17.0"
 cosign = "2.5.2"
 csvlens = "latest"
@@ -58,7 +58,6 @@ docker-slim = "1.41.7"
 doctl = "1.148.0"
 dust = "1.2.2"
 dysk = "latest"
-elixir = "1.18.4-otp-28"
 erlang = "26.2.5.6"
 fd = "10.2.0"
 ffmpeg = "7.1.1"
@@ -83,7 +82,7 @@ minikube = "1.37.0"
 miniserve = "latest"
 node = "24.3.0"
 notation = "1.3.2"
-oktaws = "0.19.1"
+oktaws = "0.23.0"
 onefetch = "latest"
 osv-scanner = "2.0.2"
 ouch = "latest"
@@ -91,12 +90,12 @@ packer = "1.14.0"
 pnpm = "10.12.4"
 pueue = "4.0.2"
 pueued = "4.0.2"
-python = "3.13.5"
+python = "3.13.3"
 ripgrep = "14.1.1"
 ruby = "3.4.4"
 ruff = "0.12.1"
 rust = "1.88.0"
-scorecard = "5.2.1"
+scorecard = "5.4.0"
 shellcheck = "latest"
 terraform = "1.12.2"
 tlrc = "1.11.1"
@@ -106,7 +105,7 @@ trivy = "0.63.0"
 "ubi:bensadeh/tailspin" = { version = "latest", exe = "tspin" }
 "ubi:crazy-max/diun" = "4.30.0"
 "ubi:rvben/rumdl" = "latest"
-"npm:@github/copilot" = "latest"
+"npm:@github/copilot" = "0.0.421"
 usage = "2.5.1"
 uv = "0.7.16"
 vector = "0.50.0"
@@ -114,3 +113,19 @@ vim = "9.1.1492"
 vivid = "0.10.1"
 yarn = "4.9.2"
 yq = "4.45.4"
+liquibase = "5.0.1"
+pipx = "latest"
+localstack = "4.14.0"
+codeql = { version = "latest", platforms = """
+[linux-x64]
+asset_pattern = "codeql-linux64.zip"
+
+[macos-arm64]
+asset_pattern = "codeql-osx64.zip"
+
+[macos-x64]
+asset_pattern = "codeql-osx64.zip"
+
+[windows-x64]
+asset_pattern = "codeql-win64.zip"
+""", bin_path = "codeql" }

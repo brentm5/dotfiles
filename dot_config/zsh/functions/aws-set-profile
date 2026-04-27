@@ -1,4 +1,3 @@
-{{- if .work_environment -}}
 # Sets the aws profile by setting the AWS_PROFILE environment variable, and saving the profile name to a static file to keep state.
 # Config for this function is in zsh/configs/pre/030-aws-profile.zsh
 
@@ -14,9 +13,6 @@ aws-set-profile() {
     return 1
   fi
 
-  echo "${PROFILE_NAME}" > "${AWS_PROFILE_FILE}"
   mise set --file ~/mise.local.toml AWS_PROFILE="${PROFILE_NAME}"
   oktaws $AWS_PROFILE
 }
-
-{{- end -}}

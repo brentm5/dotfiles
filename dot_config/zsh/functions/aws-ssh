@@ -1,4 +1,3 @@
-{{- if .work_environment -}}
 # will attempt to login to the IP address of the aws instance id
 
 aws-ssh() {
@@ -19,4 +18,3 @@ aws-ssh() {
 
   ssh $IP_ADDRESS
 }
-{{- end -}}

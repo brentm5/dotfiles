@@ -28,3 +28,8 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\""
 
 defaults write com.apple.dock "mru-spaces" -bool "false" && killall Dock
+
+defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false" && killall Finder
+
+# Allow for repeat of keys in vscode
+defaults write com.microsoft.VSCode "ApplePressAndHoldEnabled" -bool false

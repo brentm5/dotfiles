@@ -49,6 +49,8 @@ packages:
       scope: 'common'
     - name: 'marked'
       scope: 'common'
+    - name: 'git-credential-manager'
+      scope: 'common'
   mas:
     - name: "1091189122" # Bear
       scope: 'personal'
