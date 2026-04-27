@@ -19,4 +19,10 @@ tmp/**/*
 .vscode/
 .project
 .factorypath
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+mise.local.toml
+settings.local.json
+.cvent-rpi/
+.claude/worktree/
 

@@ -6,9 +6,11 @@ aws-refresh() {
 
   if [[ -z $PROFILE_NAME ]]; then
     echo "Profile set to $AWS_PROFILE, refreshing profile" >&2
-    oktaws $AWS_PROFILE
+    # If using SSO profiles we need to login again
+    aws --profile $AWS_PROFILE sso login
   else
     echo "Profile name not set, refreshing everything" >&2
-    oktaws
+    # If using SSO profiles we need to login again
+    aws --profile $PROFILE_NAME sso login
   fi
 }

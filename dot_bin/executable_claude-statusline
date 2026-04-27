@@ -17,6 +17,7 @@ get_cost() { echo "$input" | jq -r '.cost.total_cost_usd'; }
 get_duration() { echo "$input" | jq -r '.cost.total_duration_ms'; }
 get_lines_added() { echo "$input" | jq -r '.cost.total_lines_added'; }
 get_lines_removed() { echo "$input" | jq -r '.cost.total_lines_removed'; }
+get_percent_context() { echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1; }
 git_prompt_info() {
   current_branch=$(git current-branch 2> /dev/null)
   if [[ -n $current_branch ]]; then
@@ -29,4 +30,5 @@ MODEL=$(get_model_name)
 DIR=$(get_current_dir)
 SESSION_ID=$(get_session_id)
 GIT_PROMPT=$(git_prompt_info)
-echo "[$SESSION_ID] 📁 ${DIR##*/} 🪾 $GIT_PROMPT"
+CONTEXT_WINDOW=$(echo "$(get_percent_context)%")
+echo "[$SESSION_ID] 📁 ${DIR##*/} 🪾 $GIT_PROMPT $MODEL | $CONTEXT_WINDOW"
