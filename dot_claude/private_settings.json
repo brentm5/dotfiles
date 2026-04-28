@@ -40,5 +40,18 @@
   "alwaysThinkingEnabled": false,
   "skipDangerousModePermissionPrompt": true,
   "voiceEnabled": true,
-  "model": "opusplan"
+  "model": "opusplan",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ]
+  }
 }

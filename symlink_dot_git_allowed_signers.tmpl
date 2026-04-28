@@ -1,1 +1,5 @@
+{{- if .work_environment }}
 {{ .chezmoi.homeDir }}/.dotfiles-local/git_allowed_signers
+{{ else }}
+{{ .chezmoi.homeDir }}/.cloud-sync/.dotfiles-local/git_allowed_signers
+{{- end }}

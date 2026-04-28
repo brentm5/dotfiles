@@ -102,9 +102,9 @@ tlrc = "1.11.1"
 tokei = "12.1.2"
 tree-sitter = "latest"
 trivy = "0.63.0"
-"ubi:bensadeh/tailspin" = { version = "latest", exe = "tspin" }
-"ubi:crazy-max/diun" = "4.30.0"
-"ubi:rvben/rumdl" = "latest"
+"github:bensadeh/tailspin" = { version = "latest", exe = "tspin" }
+"github:crazy-max/diun" = "4.30.0"
+"github:rvben/rumdl" = "latest"
 "npm:@github/copilot" = "0.0.421"
 usage = "2.5.1"
 uv = "0.7.16"
