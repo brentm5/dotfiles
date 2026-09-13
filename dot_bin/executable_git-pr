@@ -11,6 +11,16 @@ echo "Checking if PR exists for this branch..."
 
 if [ $PR_EXISTS = 'true' ]; then
   gh pr view $(gh pr list --head $CURRENT_BRANCH --state open --json number --jq '.[0].number') --web
-  else 
-  gh pr create --fill -e && gh pr view --web 
+else
+  printf "No open PR found for branch '%s'. Create one? [y/N] " "$CURRENT_BRANCH"
+  read CONFIRM
+  case "$CONFIRM" in
+    [yY][eE][sS]|[yY])
+      gh pr create --fill -e && gh pr view --web
+      ;;
+    *)
+      echo "Aborted."
+      exit 0
+      ;;
+  esac
 fi

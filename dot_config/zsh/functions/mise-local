@@ -1,0 +1,15 @@
+# Create a mise.local.toml file at the root of the current Git repository.
+
+mise-local() {
+  local git_root
+
+  if ! git_root="$(git rev-parse --show-toplevel 2>/dev/null)"; then
+    echo "Not in a git repository" >&2
+    return 1
+  fi
+
+  cat > "$git_root/mise.local.toml" <<'EOF'
+[settings]
+disable_backends = []
+EOF
+}
