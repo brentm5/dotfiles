@@ -2095,6 +2095,8 @@ Generate terminal commands for macOS without explanations. Output only the comma
 	</dict>
 	<key>Print In Black And White</key>
 	<true/>
+	<key>ReportRightClick</key>
+	<true/>
 	<key>ShowFullScreenTabBar</key>
 	<true/>
 	<key>SoundForEsc</key>
