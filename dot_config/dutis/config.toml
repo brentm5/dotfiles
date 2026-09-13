@@ -1,0 +1,7 @@
+version = 2
+
+[associations]
+md = "com.brettterpstra.marked2"
+json = "com.microsoft.VSCode"
+ts = "com.microsoft.VSCode"
+txt = "com.microsoft.VSCode"
