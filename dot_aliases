@@ -51,5 +51,6 @@ alias opencode='trajectory opencode trace-startup'
 
 alias pf='pitchfork'
 
+
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local

@@ -10,6 +10,8 @@ packages:
       scope: 'common'
     - name: 'docker-compose'
       scope: 'common'
+    - name: 'coreutils'
+      scope: 'common'
     - name: 'docker-credential-helper'
       scope: 'common'
     - name: 'docker'
@@ -39,8 +41,6 @@ packages:
     - name: 'watch'
       scope: 'common'
     - name: 'netcat'
-      scope: 'common'
-    - name: 'wget'
       scope: 'common'
   casks:
     - name: 'font-hack-nerd-font'

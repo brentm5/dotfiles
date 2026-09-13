@@ -1,1 +1,5 @@
+{{- if .work_environment }}
 {{ .chezmoi.homeDir }}/.dotfiles-local/gitconfig.local
+{{ else }}
+{{ .chezmoi.homeDir }}/.cloud-sync/.dotfiles-local/gitconfig.local
+{{- end }}
