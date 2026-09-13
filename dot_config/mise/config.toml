@@ -5,6 +5,9 @@ trusted_config_paths = [
   '~/code',
 ]
 
+[settings.github]
+credential_command = 'gh auth token'
+
 [tool_alias]
 datadog-sbom-generator = 'github:datadog/datadog-sbom-generator'
 datadog-static-analyzer = 'github:datadog/datadog-static-analyzer'
