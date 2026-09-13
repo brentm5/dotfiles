@@ -1,0 +1,6 @@
+#compdef pitchfork
+
+# Check if pitchfork is installed
+if [ -f "$HOME/.local/share/mise/shims/pitchfork" ]; then
+  eval "$(pitchfork completion zsh)";
+fi

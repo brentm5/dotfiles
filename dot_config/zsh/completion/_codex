@@ -1,0 +1,7 @@
+#compdef codex
+
+# Check if codex is installed
+if (( $+commands[codex] )); then
+  setopt localoptions no_aliases
+  eval "$(command codex completion zsh)"
+fi

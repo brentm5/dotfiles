@@ -25,4 +25,5 @@ mise.local.toml
 settings.local.json
 .cvent-rpi/
 .claude/worktree/
-
+.claude/worktrees
+.pnpm-store/

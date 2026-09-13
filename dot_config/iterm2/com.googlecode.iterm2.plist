@@ -2096,7 +2096,7 @@ Generate terminal commands for macOS without explanations. Output only the comma
 	<key>Print In Black And White</key>
 	<true/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
@@ -2126,6 +2126,8 @@ Generate terminal commands for macOS without explanations. Output only the comma
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
 	<true/>
 	<key>kCPKUseSystemColorPicker</key>
+	<false/>
+	<key>kTurnOffSlowTriggersOfferUserDefaultsKey</key>
 	<false/>
 </dict>
 </plist>

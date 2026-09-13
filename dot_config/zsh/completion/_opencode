@@ -1,0 +1,7 @@
+#compdef opencode
+
+# Check if opencode is installed
+if (( $+commands[opencode] )); then
+  setopt localoptions no_aliases
+  eval "$(command opencode completion zsh)"
+fi
