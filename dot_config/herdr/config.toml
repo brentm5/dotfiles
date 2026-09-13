@@ -1,0 +1,78 @@
+onboarding = false
+
+[theme]
+name = "dracula"
+auto_switch = false
+
+[ui]
+status_indicators = "symbols"
+agent_panel_sort = "priority"
+
+[ui.toast]
+delivery = "terminal"
+
+[worktrees]
+directory = "~/.herdr/worktrees"
+
+[keys]
+# --- Prefix -----------------------------------------------------------------
+# tmux: `unbind C-b; set -g prefix C-a` (GNU-screen style)
+prefix = "ctrl+a"
+
+# --- Session / detach -------------------------------------------------------
+# tmux default `prefix+d` detaches; herdr defaults to prefix+q, so remap it.
+detach = "prefix+d"
+
+# tmux: `bind s choose-session` -> pick a project/workspace
+workspace_picker = "prefix+s"
+# settings defaults to prefix+s, which now belongs to the picker; relocate it.
+settings = "prefix+shift+s"
+
+# --- Tabs (tmux "windows") --------------------------------------------------
+# tmux default `bind c` new-window
+new_tab = "prefix+c"
+# tmux: `bind-key -r C-h select-window -t :-`
+previous_tab = "prefix+ctrl+h"
+# tmux: `bind-key -r C-l select-window -t :+`
+next_tab = "prefix+ctrl+l"
+
+# --- Pane focus (vim h/j/k/l) ----------------------------------------------
+# tmux: `bind h/j/k/l select-pane -L/-D/-U/-R` (matches herdr defaults)
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# tmux: `bind ^A select-pane -t :.+` cycled panes via a double prefix tap.
+# herdr reserves "prefix+<prefix key>" to send a literal prefix, so that
+# double-tap can't be reproduced -> use prefix+Tab for cycling instead.
+cycle_pane_next = "prefix+tab"
+
+# --- Splits -----------------------------------------------------------------
+# tmux: `bind - split -v` (stacked, top/bottom) == herdr split_horizontal
+split_horizontal = "prefix+minus"
+# tmux: `bind \ split -h` (side-by-side) == herdr split_vertical
+# (backslash binding verified accepted by `herdr server reload-config`)
+split_vertical = "prefix+backslash"
+
+# --- Pane / zoom (tmux defaults, listed for clarity) ------------------------
+close_pane = "prefix+x"
+zoom = "prefix+z"
+
+# --- Navigate mode (vim movement; tmux `setw -g mode-keys vi`) --------------
+navigate_pane_left = "h"
+navigate_pane_down = "j"
+navigate_pane_up = "k"
+navigate_pane_right = "l"
+
+# Claude Code sets the terminal title to the conversation name, which is far
+# more useful in the agent panel than the constant "claude" agent label.
+# Scoped to claude so other agents keep the default rows.
+[ui.sidebar.agents.rows_by_agent]
+claude = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"]]
+
+# Show each space's pane count next to its name. There is no built-in
+# pane_count token, so $panes is fed by `bin/herdr-pane-count`, a poller
+# started from zshrc that reports the count as workspace metadata.
+[ui.sidebar.spaces]
+rows = [["state_icon", "workspace", "$panes"], ["branch", "git_status"]]

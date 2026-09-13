@@ -1,0 +1,6 @@
+theme = "monokai"
+default_scope = "branch"
+navigator_position = "right"
+toggle_placement = "tab"
+auto_open = true
+editor = "code -g {file}:{line}"

@@ -14,5 +14,4 @@ aws-set-profile() {
   fi
 
   mise set --file ~/mise.local.toml AWS_PROFILE="${PROFILE_NAME}"
-  oktaws $AWS_PROFILE
 }

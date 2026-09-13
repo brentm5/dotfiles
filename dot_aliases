@@ -1,4 +1,5 @@
 # General
+alias graphviz="command dot"
 alias dot="chezmoi"
 alias dotfiles="chezmoi cd"
 alias md="marked"
@@ -40,11 +41,15 @@ alias path='echo $PATH | tr -s ":" "\n"'
 # Command to reload zsh
 alias reload-zsh='source ${HOME}/.zshrc'
 
-alias claude='claude --allow-dangerously-skip-permissions'
+alias rcodex='codex'
+alias rclaude='claude'
+alias rpi='pi'
+alias ropencode='opencode'
 
-alias claudew='claude --worktree'
+alias pi='trajectory pi trace-startup'
+alias opencode='trajectory opencode trace-startup'
 
-alias tclaude='tmux new-session \; send-keys 'claudew' C-m \;'
+alias pf='pitchfork'
 
 
 # Include custom aliases

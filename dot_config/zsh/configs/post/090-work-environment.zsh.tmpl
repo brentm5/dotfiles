@@ -4,4 +4,7 @@ export DD_BETA_COMMANDS_ENABLED=1
 
 export REQUESTS_CA_BUNDLE=/Library/Application\ Support/Netskope/STAgent/download/nscacert_combined.pem
 
+# Add trajectory to the start of the path https://github.com/datadog-labs/trajectory
+export PATH="${HOME}/.trajectory/bin:${PATH}"
+
 {{- end }}

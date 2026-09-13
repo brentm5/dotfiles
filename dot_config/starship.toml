@@ -1,0 +1,122 @@
+# Starship prompt config
+# Powerline style based on original p10k setup
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+command_timeout = 500
+
+format = """
+[](fg:236)\
+$os\
+$directory\
+$git_branch\
+$git_status\
+[](fg:236)\
+$fill\
+$cmd_duration\
+$jobs\
+$java\
+$python\
+$nodejs\
+$ruby\
+$rust\
+$aws\
+$time\
+$line_break\
+$character"""
+
+[fill]
+symbol = " "
+
+[os]
+disabled = false
+style = "bg:236 fg:255"
+format = "[$symbol ]($style)"
+
+[os.symbols]
+Arch = ""
+Linux = ""
+Macos = ""
+Windows = ""
+
+[directory]
+style = "bg:236 fg:39 bold"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+truncate_to_repo = true
+
+[git_branch]
+symbol = " "
+style = "bg:236 fg:76"
+format = "[](fg:236 bg:236)[$symbol$branch ]($style)"
+
+[git_status]
+style = "bg:236 fg:178"
+format = "[$all_status$ahead_behind]($style)"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+conflicted = ""
+untracked = "?${count}"
+stashed = ""
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
+
+[cmd_duration]
+min_time = 2000
+style = "bg:236 fg:220"
+format = "[](fg:236)[ $duration ]($style)"
+
+[jobs]
+style = "bg:236 fg:208"
+format = "[](fg:236)[ $number]($style)"
+
+[python]
+#symbol = ""
+style = "bg:236 fg:220"
+format = "[](fg:236)[ $symbol$version]($style)"
+
+[java]
+#symbol = ""
+style = "bg:236 fg:75"
+format = "[](fg:236)[ $symbol$version]($style)"
+
+[nodejs]
+#symbol = ""
+style = "bg:236 fg:76"
+format = "[](fg:236)[ $symbol$version]($style)"
+
+[ruby]
+#symbol = ""
+style = "bg:236 fg:196"
+format = "[](fg:236)[ $symbol$version]($style)"
+
+[rust]
+#symbol = ""
+style = "bg:236 fg:208"
+format = "[](fg:236)[ $symbol$version]($style)"
+
+[aws]
+symbol = ""
+style = "bg:236 fg:208"
+format = "[](fg:236)[ $symbol $profile]($style)"
+
+[time]
+disabled = false
+style = "bg:236 fg:66"
+format = "[](fg:236)[ $time ]($style)[](fg:236)"
+time_format = "%H:%M:%S"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[package]
+disabled = true
+
+[hostname]
+ssh_only = false
