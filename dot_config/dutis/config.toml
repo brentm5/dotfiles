@@ -1,6 +1,5 @@
 version = 2
 
-# The compact version 1 extension syntax remains supported.
 [associations]
 md = "com.brettterpstra.marked2"
 json = "com.microsoft.VSCode"
