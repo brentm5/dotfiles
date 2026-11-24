@@ -10,7 +10,7 @@
       "Bash(pnpm test:*)"
     ]
   },
-  "model": "opusplan",
+  "model": "opus",
   "hooks": {
     "PreToolUse": [
       {
@@ -25,7 +25,7 @@
     ],
     "SessionStart": [
       {
-        "matcher": "*",
+        "matcher": "^(startup|resume|clear|compact|fork)$",
         "hooks": [
           {
             "type": "command",
@@ -47,7 +47,9 @@
     "claude-md-management@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true
+    "mattpocock-skills@claude-plugins-official": true,
+    "ruby-lsp@claude-plugins-official": true,
+    "trajectory@trajectory": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -61,11 +63,17 @@
         "source": "github",
         "repo": "anthropics/claude-code"
       }
+    },
+    "trajectory": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/brentm5/.trajectory/claude-marketplace"
+      }
     }
   },
   "alwaysThinkingEnabled": false,
   "skipDangerousModePermissionPrompt": true,
+  "editorMode": "vim",
   "agentPushNotifEnabled": true,
-  "voiceEnabled": true,
-  "editorMode": "vim"
+  "voiceEnabled": true
 }

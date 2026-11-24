@@ -31,9 +31,11 @@ Generate terminal commands for macOS without explanations. Output only the comma
 	<key>AitermURL</key>
 	<string>http://localhost:11434/api/chat</string>
 	<key>AllowClipboardAccess</key>
-	<false/>
+	<true/>
 	<key>CheckTestRelease</key>
 	<false/>
+	<key>ClaudeCodeWorkgroupUpsellSuppressed</key>
+	<true/>
 	<key>ClickToSelectCommand</key>
 	<false/>
 	<key>CopySelection</key>
@@ -48,7 +50,7 @@ Generate terminal commands for macOS without explanations. Output only the comma
 	<true/>
 	<key>GlobalKeyMap</key>
 	<dict>
-		<key>0xd-0x20000-0x24</key>
+		<key>0xd-0x20000-0x24-0x1</key>
 		<dict>
 			<key>Action</key>
 			<integer>12</integer>
@@ -2122,7 +2124,7 @@ Generate terminal commands for macOS without explanations. Output only the comma
 	<key>WrapDroppedFilenamesInQuotesWhenPasting</key>
 	<true/>
 	<key>findMode_iTerm</key>
-	<integer>0</integer>
+	<integer>2</integer>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
