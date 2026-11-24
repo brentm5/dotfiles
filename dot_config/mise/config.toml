@@ -6,6 +6,7 @@ trusted_config_paths = [
   '~/.codex/worktree',
 ]
 experimental = true
+auto_update = true
 
 [settings.github]
 credential_command = 'gh auth token'
@@ -14,6 +15,7 @@ credential_command = 'gh auth token'
 csvlens = 'github:ys-l/csvlens'
 datadog-sbom-generator = 'github:datadog/datadog-sbom-generator'
 datadog-static-analyzer = 'github:datadog/datadog-static-analyzer'
+bd = 'github:gastownhall/beads'
 dysk = 'github:Canop/dysk'
 ftree = 'github:trinhminhtriet/ftree'
 herdr-reviewr = 'github:persiyanov/herdr-reviewr'
@@ -62,7 +64,7 @@ datadog-static-analyzer = "0.6.6"
 delta = "0.18.2"
 docker-slim = "1.41.7"
 doctl = "1.148.0"
-dust = "1.2.2"
+dust = "latest"
 dysk = "latest"
 erlang = "26.2.5.6"
 fd = "10.2.0"
@@ -123,7 +125,7 @@ usage = "3.2.1"
 uv = "0.7.16"
 vector = "0.58.0"
 vim = "9.1.1492"
-vivid = "0.10.1"
+vivid = "0.11.1"
 yarn = "4.9.2"
 yq = "4.45.4"
 pipx = "latest"
@@ -131,8 +133,10 @@ gum = "2.0.1"
 vault = "latest"
 consul = "latest"
 "github:Gu1llaum-3/sshm" = "latest"
-rtk = "0.49.0"
+rtk = "1.1.0"
 gping = "1.20.4"
-herdr = "0.9.0"
 worktrunk = "latest"
 op = "2.39.0"
+bd = "latest"
+"github:gu1llaum-3/sshm" = "1.12.0"
+"npm:@github/copilot" = "1.0.103"
